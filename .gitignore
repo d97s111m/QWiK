@@ -11,7 +11,7 @@
 
 # Terraform Local Plugins and Modules 
 .terraform/
-.terraform.lock.hcl
+# .terraform.lock.hcl
 
 ### AWS / General Secrets ###
 # AWS Key Files 
