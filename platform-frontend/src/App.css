@@ -1,4 +1,5 @@
-/* App.css */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 
 /* Reset */
 *,
@@ -16,12 +17,15 @@
 
 html {
   font-size: 62.5%; /* 1rem = 10px */
+  scroll-behavior: smooth;
 }
 
 body {
-  font-size: 1.6rem; /* 16px */
+  font-size: 1.6rem;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  font-family: "Source Code Pro", "Pretendard", -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
 }
 
 img,
@@ -58,4 +62,24 @@ ol {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+/* color setting */
+:root {
+  --primary-color: #93806b;
+  --secondary-color: #cbbbab;
+  --accent-color: #4a758b;
+  --accent-bg: #d1e0e8;
+  --text-color: #5c4f46;
+  --bg-color: #fdf9f5;
+  --sub-bg-color: #efe0d1;
+}
+
+/* layout setting */
+section {
+  padding-top: 100px;
+}
+.wrap {
+  width: 1200px;
+  margin: 0 auto;
 }
