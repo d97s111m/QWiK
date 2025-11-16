@@ -3,13 +3,16 @@ import { useNavigate } from "react-router-dom";
 
 async function sendCodeToBackend(code) {
   try {
-    const response = await fetch("백엔드 URL로 진입 시도", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ code: code }),
-    });
+    const response = await fetch(
+      "https://cmbvknq8pi.execute-api.ap-northeast-2.amazonaws.com/dev/api/auth/github",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ code: code }),
+      }
+    );
     const result = await response.json();
     return result;
   } catch (error) {
@@ -20,33 +23,38 @@ async function sendCodeToBackend(code) {
 
 const AuthCallback = () => {
   const navigate = useNavigate();
+
   useEffect(() => {
+    let executed = false; // 중복 실행 방지
+
     const handleCallback = async () => {
+      if (executed) return; // 이미 실행됐으면 종료
+      executed = true;
+
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get("code");
-      // code 확인용 콘솔 로그
-      // 확인 후 삭제
-      console.log(code);
 
       if (code) {
         try {
           const result = await sendCodeToBackend(code);
-          if (result.success) {
+
+          if (result.success === true) {
             localStorage.setItem("token", result.accessToken);
             navigate("/dashboard");
           } else {
             console.error("로그인 실패");
-            // 테스트를 위해 로그인 실패시에도 로그인 페이지로 돌아가지 않음
-            // navigate("/login");
+            navigate("/");
           }
         } catch (error) {
           console.error("에러 확인됨", error);
-          //   navigate("/login");
+          navigate("/");
         }
       }
     };
+
     handleCallback();
   }, []);
+
   return <section className="wrap">로그인 처리 중</section>;
 };
 
