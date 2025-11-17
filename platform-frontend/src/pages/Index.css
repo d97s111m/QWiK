@@ -1,28 +1,3 @@
-.index-section
-  .service-info-container
-  .copyright-box
-  .step-container
-  .step-box
-  .step-num
-  .step-info-text-box
-  .service-overview-container
-  .deployments-list-container
-  .deployment-box
-  .project-name
-  .domain-text
-  .dashboard-container
-  .disk-usage-box
-  .graph-box
-  .traffic-usage-box
-  .resource-monitor-box
-  .project-box
-  .text-box
-  .precent-num
-  .progress-bar-box
-  .fill-bar
-  .total-bar {
-}
-
 .index-section {
   background: var(--bg-color);
   width: 100%;
