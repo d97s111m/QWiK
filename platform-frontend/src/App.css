@@ -22,6 +22,7 @@ html {
 
 body {
   font-size: 1.6rem;
+  font-weight: 300;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   font-family: "Source Code Pro", "Pretendard", -apple-system,
@@ -68,11 +69,12 @@ a {
 :root {
   --primary-color: #93806b;
   --secondary-color: #cbbbab;
+  --secondary-bg: #efe0d1;
   --accent-color: #4a758b;
   --accent-bg: #d1e0e8;
   --text-color: #5c4f46;
   --bg-color: #fdf9f5;
-  --sub-bg-color: #efe0d1;
+  --bg-sub-color: #efe0d1;
 }
 
 /* layout setting */
@@ -82,4 +84,27 @@ section {
 .wrap {
   width: 1200px;
   margin: 0 auto;
+}
+
+/* text settiong */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.title-text {
+  font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  line-height: 1.2;
+  color: var(--text-color);
 }

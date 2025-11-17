@@ -39,6 +39,7 @@ const AuthCallback = () => {
           const result = await sendCodeToBackend(code);
 
           if (result.success === true) {
+            // localStrage에 할지 sessionStorage로 할지
             localStorage.setItem("token", result.accessToken);
             navigate("/dashboard");
           } else {
