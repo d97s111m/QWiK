@@ -9,6 +9,9 @@
 *.tfvars
 *.auto.tfvars
 
+!dev.tfvars
+!prod.tfvars
+
 # Terraform Local Plugins and Modules 
 .terraform/
 # .terraform.lock.hcl

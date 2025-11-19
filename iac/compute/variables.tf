@@ -5,3 +5,7 @@ variable "aws_region" {
   type        = string
   default     = "ap-northeast-2" # Seoul Region 
 }
+
+variable "environment" {
+  type = string
+}

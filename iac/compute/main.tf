@@ -30,6 +30,8 @@ provider "aws" {
 data "terraform_remote_state" "base" {
   backend = "s3"
 
+  workspace = terraform.workspace
+
   config = {
     bucket = "qwik-terraform-state" # base와 동일한 버킷 이름
     key    = "base/terraform.tfstate" # base의 상태 파일 경로

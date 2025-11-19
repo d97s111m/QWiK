@@ -7,10 +7,11 @@
 # 프론트엔드 정적 파일 호스팅용 S3 버킷
 
 resource "aws_s3_bucket" "qwik_frontend_bucket" {
-  bucket = "qwik-frontend-bucket"
+  bucket = var.qwik_frontend_bucket_name
 
   tags = {
-    Name = "QWiK-Frontend-Bucket"
+    Name        = "QWiK-Frontend-Bucket-${var.environment}"
+    Environment = var.environment
   }
 }
 
@@ -21,9 +22,9 @@ resource "aws_s3_bucket_public_access_block" "qwik_frontend_bucket_pab" {
   bucket = aws_s3_bucket.qwik_frontend_bucket.id
 
   # 차단 설정
-  block_public_acls = true
-  block_public_policy = true
-  ignore_public_acls = true
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
   restrict_public_buckets = true
 }
 
@@ -39,13 +40,13 @@ resource "aws_s3_bucket_policy" "qwik_frontend_bucket_policy" {
     Version = "2012-10-17",
     Statement = [
       {
-        Effect    = "Allow",
+        Effect = "Allow",
         Principal = {
           # cloudfront.tf에서 정의할 OAI의 ARN을 참조
           AWS = aws_cloudfront_origin_access_identity.qwik_frontend_oai.iam_arn
         },
-        Action    = "s3:GetObject", # 파일 읽기만 허용
-        Resource  = "${aws_s3_bucket.qwik_frontend_bucket.arn}/*"
+        Action   = "s3:GetObject", # 파일 읽기만 허용
+        Resource = "${aws_s3_bucket.qwik_frontend_bucket.arn}/*"
       }
     ]
   })
