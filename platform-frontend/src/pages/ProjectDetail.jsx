@@ -2,9 +2,9 @@ import React from "react";
 
 const ProjectDetail = () => {
   return (
-    <div>
-      <h1>ProjectDetail Page</h1>
-    </div>
+    <section className="project-detail-setion">
+      <div className="wrap">project detail</div>
+    </section>
   );
 };
 

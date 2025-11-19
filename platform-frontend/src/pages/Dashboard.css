@@ -122,7 +122,7 @@
 }
 
 .dashboard-section .project-box.full,
-.dashboard-section .project-box.empty {
+.dashboard-section .project-box.available {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -130,7 +130,7 @@
 }
 
 .dashboard-section .project-box.full i,
-.dashboard-section .project-box.empty i {
+.dashboard-section .project-box.available i {
   width: 80px;
   line-height: 80px;
   font-size: 3rem;
@@ -141,6 +141,6 @@
 }
 
 .dashboard-section .project-box.full p,
-.dashboard-section .project-box.empty p {
+.dashboard-section .project-box.available p {
   margin-top: 20px;
 }

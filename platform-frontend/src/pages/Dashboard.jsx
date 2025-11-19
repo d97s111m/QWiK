@@ -1,7 +1,57 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  const mockProjects = [
+    {
+      id: 1,
+      name: "test-project",
+      userName: "testmock",
+      status: "active",
+      githubRepo: "test-repo",
+      dsecription: "first",
+      subdomain: "test-dev",
+      createdAt: "2025-11-18T14:30:00",
+      updatedAt: "",
+    },
+    {
+      id: 2,
+      name: "second-project",
+      userName: "testmock",
+      status: "inactive",
+      githubRepo: "second-repo",
+      dsecription: "second merge",
+      subdomain: "second-dev",
+      createdAt: "2025-11-19T16:54:01",
+      updatedAt: "2025-11-19T17:05:04",
+    },
+  ];
+
+  // 날짜 포맷팅
+  const formatDate = (dateString, includeTime = false) => {
+    if (!dateString) return "";
+
+    const date = new Date(dateString);
+    const year = date.getFullYear().toString().slice(-2); // yy
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // mm
+    const day = String(date.getDate()).padStart(2, "0"); // dd
+
+    if (includeTime) {
+      const hours = String(date.getHours()).padStart(2, "0");
+      const minutes = String(date.getMinutes()).padStart(2, "0");
+      return `${year}.${month}.${day} ${hours}:${minutes}`;
+    }
+
+    return `${year}.${month}.${day}`;
+  };
+
+  // 클릭 핸들러
+  const handleProjectClick = (projectId) => {
+    navigate(`/project/${projectId}`);
+  };
+
   useEffect(() => {
     const testUserAPI = async () => {
       const token = localStorage.getItem("token");
@@ -40,6 +90,7 @@ const Dashboard = () => {
             프로젝트는 N개입니다.
           </p>
         </div>
+
         <div className="resource-container">
           <div className="memory-container">
             <div className="text-box">
@@ -67,66 +118,55 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="project-list-container">
-          <p className="project-counter eng">3 / 3</p>
+          <p className="project-counter eng">{mockProjects.length} / 3</p>
           <div className="project-list-box">
-            <div className="project-box eng">
-              <span className="git-repository">GitHubId/RepositoryName</span>
-              <span className="status active"></span>
-              <p className="project-title">Project Name</p>
-              <p className="project-url">subdomain.q-wik.com</p>
-              <p className="version">
-                ver. <span>COMMIN MESSAGE</span>
-              </p>
-              <div className="date-box">
-                <p className="origin">
-                  최초 <span>yy.mm.dd</span>
+            {mockProjects.map((project) => (
+              <div
+                key={project.id}
+                className="project-box eng"
+                onClick={() => handleProjectClick(project.id)}
+                style={{ cursor: "pointer" }}
+              >
+                <span className="git-repository">
+                  {project.userName}/{project.githubRepo}
+                </span>
+                <span className={`status ${project.status}`}></span>
+                <p className="project-title">{project.name}</p>
+                <p className="project-url">{project.subdomain}.q-wik.com</p>
+                <p className="version">
+                  ver.<span>{project.dsecription}</span>
                 </p>
-                <span>/</span>
-                <p className="update">
-                  마지막 <span>yy.mm.dd hh:mm</span>
-                </p>
+                <div className="date-box">
+                  <p className="origin">
+                    최초 <span>{formatDate(project.createdAt)}</span>
+                  </p>
+
+                  {project.updatedAt && (
+                    <>
+                      <span>/</span>
+                      <p className="update">
+                        마지막{" "}
+                        <span>{formatDate(project.updatedAt, true)}</span>
+                      </p>
+                    </>
+                  )}
+                </div>
               </div>
-            </div>
-            <div className="project-box eng">
-              <span className="git-repository">GitHubId/RepositoryName</span>
-              <span className="status inactive"></span>
-              <p className="project-title">Project Name</p>
-              <p className="project-url">subdomain.q-wik.com</p>
-              <p className="version">
-                ver. <span>COMMIN MESSAGE testtesttesttest</span>
-              </p>
-              <div className="date-box">
-                <p className="origin">
-                  최초 <span>yy.mm.dd</span>
-                </p>
-                <span>{}/</span>
-                <p className="update">
-                  마지막 <span>yy.mm.dd hh:mm</span>
-                </p>
+            ))}
+            {/* 조건부 + 버튼 */}
+            {mockProjects.length < 3 ? (
+              // 여유 있을 때: available
+              <div className="project-box available">
+                <i className="fas fa-plus"></i>
+                <p>프로젝트 배포하러 가기</p>
               </div>
-            </div>
-            <div className="project-box eng">
-              <span className="git-repository">GitHubId/RepositoryName</span>
-              <span className="status active"></span>
-              <p className="project-title">Project Name</p>
-              <p className="project-url">subdomain.q-wik.com</p>
-              <p className="version">
-                ver. <span>COMMIN MESSAGE</span>
-              </p>
-              <div className="date-box">
-                <p className="origin">
-                  최초 <span>yy.mm.dd</span>
-                </p>
-                <span>/</span>
-                <p className="update">
-                  마지막 <span>yy.mm.dd hh:mm</span>
-                </p>
+            ) : (
+              // 꽉 찼을 때: full
+              <div className="project-box full">
+                <i className="fas fa-plus"></i>
+                <p>프로젝트를 더 배포하고 싶다면?</p>
               </div>
-            </div>
-            <div className="project-box eng full">
-              <i className="fas fa-plus"></i>
-              <p>프로젝트를 더 배포하고 싶다면?</p>
-            </div>
+            )}
           </div>
         </div>
       </div>
