@@ -153,27 +153,35 @@ span {
   background-color: #cbbbab;
 }
 
-.confirm-btn-box button:first-child {
+.btn-box button:first-child {
   margin-right: 10px;
 }
 
-.modal-popup .impact {
+button.impact {
   color: #fff;
   background-color: var(--accent-color);
 }
 
-.modal-popup .impact:hover {
+button.impact:hover {
   background-color: #305c72;
 }
 
 /* input setting */
+
+input::placeholder {
+  font-family: "Pretendard", sans-serif; /* 한글이니까 */
+}
+input {
+  font-family: "Source Code Pro", monospace; /* 입력값은 영어 */
+}
+
 input[type="text"] {
   display: inline-block;
   border: none;
   background-color: var(--bg-sub-color);
   line-height: 2;
   border-radius: 16px;
-  text-indent: 10px;
+  text-indent: 16px;
   outline: none;
 }
 
