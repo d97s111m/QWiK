@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import ProjectDetail from "./pages/ProjectDetail";
 import Settings from "./pages/Settings";
 import AuthCallback from "./pages/AuthCallback";
+import Pricing from "./pages/Pricing";
 import "./App.css";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/project/:id" element={<ProjectDetail />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/pricing" element={<Pricing />} />
         </Routes>
       </div>
     </Router>
