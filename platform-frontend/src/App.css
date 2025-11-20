@@ -74,7 +74,7 @@ a {
   --accent-bg: #d1e0e8;
   --text-color: #5c4f46;
   --bg-color: #fdf9f5;
-  --bg-sub-color: #efe0d1;
+  --bg-sub-color: #e2dad1;
 }
 
 /* layout setting */
@@ -115,4 +115,68 @@ span {
 
 .eng {
   font-family: "Source Code Pro";
+}
+
+/* modal popup setting */
+
+.modal-bg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #22222299;
+}
+
+.modal-popup {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.btn-box {
+  text-align: center;
+}
+
+.modal-popup button {
+  display: inline-block;
+  padding: 6px 20px;
+  background-color: var(--secondary-bg);
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+.modal-popup button:hover {
+  background-color: #cbbbab;
+}
+
+.confirm-btn-box button:first-child {
+  margin-right: 10px;
+}
+
+.modal-popup .impact {
+  color: #fff;
+  background-color: var(--accent-color);
+}
+
+.modal-popup .impact:hover {
+  background-color: #305c72;
+}
+
+/* input setting */
+input[type="text"] {
+  display: inline-block;
+  border: none;
+  background-color: var(--bg-sub-color);
+  line-height: 2;
+  border-radius: 16px;
+  text-indent: 10px;
+  outline: none;
+}
+
+input[type="text"]:focus {
+  box-shadow: 0 0 4px 2px var(--secondary-bg);
 }
