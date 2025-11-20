@@ -124,3 +124,44 @@
 .project-detail-section .history-box p span {
   margin-right: 10px;
 }
+
+/* change subdomain modal */
+
+.change-subdomain-modal .text-box .title {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.change-subdomain-modal .notice-box {
+  margin-top: 20px;
+}
+
+.change-subdomain-modal .notice-box p {
+  margin: 6px 0;
+}
+
+.change-subdomain-modal .notice-box span {
+  color: #afafaf;
+}
+
+.change-subdomain-modal .input-box {
+  margin: 20px 0;
+}
+
+.change-subdomain-modal .input-box input[type="text"] {
+  width: calc(100% - 90px);
+}
+
+.change-subdomain-modal .input-box button {
+  display: inline-block;
+  margin-left: 5px;
+  padding: 5px 14px;
+  background-color: var(--secondary-color);
+  border-radius: 16px;
+  transition: 0.3s;
+}
+
+.change-subdomain-modal .input-box button:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
